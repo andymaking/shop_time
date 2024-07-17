@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:oktoast/oktoast.dart';
 
+import '../data/cache/app-images.dart';
 import '../data/cache/constants.dart';
 import '../utils/widget_extensions.dart';
 import '../widget/apptexts.dart';
@@ -23,7 +25,7 @@ Widget toast(String message, {bool? success, String? title}) {
               padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 14.sp),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: !success! ? Theme.of(context).primaryColor : const Color(0xFF3B3434),
+                color: !success! ? Theme.of(context).primaryColor : Colors.black,
                 borderRadius: BorderRadius.circular(12.sp)
               ),
               child: Row(
@@ -32,7 +34,7 @@ Widget toast(String message, {bool? success, String? title}) {
                   //   height: 35.sp,
                   //   width: 35.sp,
                   // ),
-                  // 10.0.sbW,
+                  10.0.sbW,
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

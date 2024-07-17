@@ -1,4 +1,4 @@
-package io.king.template_app
+package io.king.shop_time
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -51,6 +51,7 @@ class AppText extends StatelessWidget {
         decoration: decoration,
         fontFamily: family,
         // fontFamily: family,
+        color: color,
         overflow: overflow,
         fontStyle: fontStyle,
         fontWeight: weight ?? (isBold == true ? FontWeight.w700 : isSubHeader==true? FontWeight.w500: FontWeight.w400)

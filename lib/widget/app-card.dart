@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../utils/widget_extensions.dart';
 import '../data/cache/palette.dart';
@@ -65,8 +66,8 @@ class AppCard extends StatelessWidget {
           ],
           border: bordered == true
             ? Border.all(
-            color: borderColor ?? primaryColor,
-            width: borderWidth ?? 2)
+            color: borderColor ?? appBorderColor,
+            width: borderWidth ?? 1.sp)
             : null
         ),
         margin: margin ?? 0.0.padH,
@@ -74,7 +75,7 @@ class AppCard extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             onTap: onTap,
-            borderRadius: borderRadius?? BorderRadius.circular(radius ?? 16),
+            borderRadius: borderRadius?? BorderRadius.circular(radius ?? 16.sp),
             child: Container(
               height: heights,
               width: widths ?? (expandable == true ? null : width(context)),
