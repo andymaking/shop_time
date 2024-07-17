@@ -45,7 +45,7 @@ class ActionBottomSheet extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       10.sp.sbH,
-                      AppText(title??"", size: 20.sp, weight: FontWeight.w600, ),
+                      AppText(title??"", size: 20.sp, weight: FontWeight.w600, align: TextAlign.center,),
                       10.sp.sbH,
                       AppText(subTitle??"Are you sure you want to ${(title??"").toLowerCase()}?", color: const Color(0xFF6B6B6B), size: 14.sp, align: TextAlign.center,),
                       40.sp.sbH,

@@ -7,7 +7,7 @@ import 'apptexts.dart';
 
 class AppButton extends StatelessWidget {
   final VoidCallback? onTap;
-  final bool? transparent;
+  final bool transparent;
   final bool? gradient;
   final bool? borderless;
   final bool? noHeight;
@@ -30,7 +30,7 @@ class AppButton extends StatelessWidget {
   const AppButton({
     super.key,
     this.onTap,
-    this.transparent,
+    this.transparent = false,
     this.gradient,
     required this.isLoading,
     this.gradientColors,
@@ -55,57 +55,48 @@ class AppButton extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: isLoading == true ? null : onTap,
-        borderRadius: BorderRadius.circular(borderRadius??12.sp),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 100),
-          height: 52.sp,
-          alignment: Alignment.topCenter,
+        borderRadius: BorderRadius.circular(borderRadius?? (transparent? 14.sp: 12.sp)),
+        child: Container(
+          height: noHeight!= null? null: (height ?? (transparent? 38.sp: 44.sp)),
+          width: width,
+          alignment: Alignment.center,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(borderRadius??12.sp),
-            color: buttonShadowColor,
+            border: borderWidth != null || borderColor != null  || transparent? Border.all(width: borderWidth ?? 1.sp, color: borderColor ?? primaryColor): null,
+            color: transparent? null: backGroundColor != null?
+            (onTap == null || isLoading==true? backGroundColor?.withOpacity(0.5): backGroundColor?.withOpacity(0.95))  :
+            (onTap == null || isLoading==true ? disablePrimaryColor : primaryColor.withOpacity(0.95)),
           ),
-          child: Container(
-            height: noHeight!= null? null: (height ?? 48.sp),
-            width: width,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(borderRadius??12.sp),
-              border: Border.all(width: borderWidth ?? 1.sp, color: borderColor ?? appBorderColor),
-              color: backGroundColor != null?
-              (onTap == null || isLoading==true? backGroundColor?.withOpacity(0.5): backGroundColor?.withOpacity(0.95))  :
-              (onTap == null || isLoading==true ? disablePrimaryColor : primaryColor.withOpacity(0.95)),
-            ),
-            child: Padding(
-                padding:
-                padding?? EdgeInsets.symmetric(horizontal: 5.0.sp, vertical: 5.sp),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    isLoading? SpinKitThreeBounce(
-                      size: 30,
-                      itemBuilder: (context, index) {
-                        return DecoratedBox(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: index.isEven
-                                ? const Color(0xFF814309)
-                                : const Color(0xFFDCDFFF),
-                          ),
-                        );
-                      },
-                    ): child ??
-                        AppText(
-                          text ?? "",
-                          // family: 'Inter',
-                          weight: FontWeight.w700,
-                          color: textColor!=null?(onTap==null? textColor?.withOpacity(0.3): textColor): Colors.white,
-                          align: TextAlign.center,
-                          size: textSize?? 16.sp,
+          child: Padding(
+              padding:
+              padding?? EdgeInsets.symmetric(horizontal: 10.0.sp, vertical: 5.sp),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  isLoading? SpinKitThreeBounce(
+                    size: 30,
+                    itemBuilder: (context, index) {
+                      return DecoratedBox(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: index.isEven
+                              ? const Color(0xFF814309)
+                              : const Color(0xFFDCDFFF),
                         ),
+                      );
+                    },
+                  ): child ??
+                      AppText(
+                        text ?? "",
+                        // family: 'Inter',
+                        weight: FontWeight.w500,
+                        color: textColor!=null?(onTap==null? textColor?.withOpacity(0.3): textColor): null,
+                        align: TextAlign.center,
+                        size: textSize?? 12.sp,
+                      ),
 
-                  ],
-                )),
-          ),
+                ],
+              )),
         ),
       ),
     );

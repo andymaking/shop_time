@@ -109,13 +109,13 @@ class _AppTextFieldState extends State<AppTextField> {
             children: [
               AppText(
                 widget.hintText ?? "",
-                size: widget.textSize ?? 13.5.sp,
-                color :widget.hintColor ?? Theme.of(context).textTheme.bodyMedium?.color,
+                size: widget.textSize ?? 14.sp,
+                color :widget.hintColor,
                 // isBold: true,
                 align: TextAlign.start,
                 weight: FontWeight.w500,
               ),
-              5.0.sbH,
+              12.0.sbH,
             ],
           )
               : 0.0.sbH,
@@ -177,19 +177,19 @@ class _AppTextFieldState extends State<AppTextField> {
                     hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: widget.textColor?? (widget.isDark? Colors.white.withOpacity(0.5): const Color(0xFFC5C0BF)),fontSize: 15.sp, fontFamily: 'Satoshi'),
                     helperStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 16.sp, fontFamily: 'Satoshi'),
                     isDense: true,
-                    contentPadding: widget.contentPadding ?? EdgeInsets.symmetric(horizontal: 16.sp, vertical: 14.sp),
+                    contentPadding: widget.contentPadding ?? EdgeInsets.symmetric(horizontal: 16.sp, vertical: 11.sp),
                     focusedBorder: OutlineInputBorder(borderSide:
-                    BorderSide(color: widget.borderless? Colors.transparent:  primaryColor, width: 3.sp),
+                    BorderSide(color: widget.borderless? Colors.transparent:  successColor, width: 1.sp),
                         borderRadius: BorderRadius.circular(widget.borderRadius??8.sp)),
                     enabledBorder: widget.enabledBorder?? OutlineInputBorder(
-                        borderSide: BorderSide(width: 0.8.sp, color: widget.borderless?Colors.transparent:(widget.isDark? Colors.white.withOpacity(0.9) : const Color(0xFF2A2A2A).withOpacity(0.6))),
+                        borderSide: BorderSide(width: 0.8.sp, color: widget.borderless?Colors.transparent:(widget.isDark? Colors.white.withOpacity(0.9) : textColor.withOpacity(0.5))),
                         borderRadius: BorderRadius.circular(widget.borderRadius??8.sp)),
                     errorBorder:OutlineInputBorder(
-                        borderSide: BorderSide(width: 2.sp, color: widget.borderless?Colors.transparent: widget.isDark? Theme.of(context).colorScheme.error:  errorColor),
+                        borderSide: BorderSide(width: 1.sp, color: widget.borderless?Colors.transparent: widget.isDark? Theme.of(context).colorScheme.error:  errorColor),
                         borderRadius: BorderRadius.circular(widget.borderRadius??8.sp)),
-                    errorStyle: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: widget.isDark? Theme.of(context).colorScheme.error:  errorColor),
+                    errorStyle: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: Colors.red),
                     focusedErrorBorder:OutlineInputBorder(
-                        borderSide: BorderSide(width: 2, color: widget.borderless?Colors.transparent:  primaryColor,),
+                        borderSide: BorderSide(width: 1.sp, color: widget.borderless?Colors.transparent:  primaryColor,),
                         borderRadius: BorderRadius.circular(widget.borderRadius??8.sp)),
                     disabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(width: 0.8.sp, color: Theme.of(context).secondaryHeaderColor.withOpacity(0.4)),
@@ -525,7 +525,7 @@ class TextArea extends StatelessWidget {
           align: TextAlign.start,
         ),
         label.isEmpty || label==""?0.0.sbH:8.0.sbH,
-        TextField(
+        TextFormField(
           showCursor: showCursor,
           readOnly: readOnly,
           maxLength: 1000,
@@ -533,31 +533,32 @@ class TextArea extends StatelessWidget {
           onTap: onTap,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 16.sp, fontFamily: 'Aileron'),
           minLines: minLines,
-          maxLines: 5,
+          maxLines: maxLines??5,
           focusNode: focusnode,
           controller: controller,
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(
             fillColor: show==null?Theme.of(context).dividerColor.withOpacity(0.07):Colors.transparent,
             counterText: '',
-            hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 13, color: hintColor),
+            hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 13, color: textColor.withOpacity(0.4)),
             isDense: true,
             hintText: hintText,
             errorText: formError,
-            focusedBorder: OutlineInputBorder(
-                borderSide:
-                BorderSide(color: primaryColor, width: 0.8),
-                borderRadius: BorderRadius.circular(8)),
+            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: successColor, width: 1.sp),
+                borderRadius: BorderRadius.circular(8.sp)),
             enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(width: 0.8, color: Theme.of(context).disabledColor.withOpacity(0.5)),
-                borderRadius: BorderRadius.circular(8)),
-            errorBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color:  Colors.deepOrange, width: 0.8),
-                borderRadius: BorderRadius.circular(8)),
-            errorStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-            focusedErrorBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red),
-            ),
+                borderSide: BorderSide(width: 0.8.sp, color: textColor.withOpacity(0.5)),
+                borderRadius: BorderRadius.circular(8.sp)),
+            errorBorder:OutlineInputBorder(
+                borderSide: BorderSide(width: 1.sp, color: errorColor),
+                borderRadius: BorderRadius.circular(8.sp)),
+            errorStyle: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: Colors.red),
+            focusedErrorBorder:OutlineInputBorder(
+                borderSide: BorderSide(width: 1.sp, color:primaryColor,),
+                borderRadius: BorderRadius.circular(8.sp)),
+            disabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(width: 0.8.sp, color: Theme.of(context).secondaryHeaderColor.withOpacity(0.4)),
+                borderRadius: BorderRadius.circular(8.sp)),
             suffixIcon: suffixIcon,
             prefixIcon: prefixIcon,
             filled: true,

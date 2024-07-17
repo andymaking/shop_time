@@ -13,12 +13,12 @@ class PriceWidget extends StatelessWidget {
   final Color? color;
   final String? family;
   final bool? roundUp;
-  final bool? isDollar;
+  final bool isDollar;
   final bool isBold;
   final int? decimalPlaces;
   final double? iconSize;
   final FontWeight? weight;
-  const PriceWidget({super.key, this.value, this.size, this.color, this.roundUp, this.family, this.isBold = false, this.weight, this.isDollar, this.decimalPlaces, this.iconSize, this.spaceSize});
+  const PriceWidget({super.key, this.value, this.size, this.color, this.roundUp, this.family, this.isBold = false, this.weight, this.isDollar = false, this.decimalPlaces, this.iconSize, this.spaceSize});
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +29,11 @@ class PriceWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         AppText(
-          isDollar == true? "\$" : "₦",
+          isDollar? "\$" : "₦",
           size: iconSize?? size,
           weight: weight,
           color: color,
-          family: family,
+          family: isDollar? null : 'Inter',
         ),
         spaceSize==null? 0.0.sbW: spaceSize!.sp.sbW,
         Text(

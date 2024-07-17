@@ -7,5 +7,7 @@ class StorageKey {
   static const String IS_DARK_MODE = 'isAppOnDarkMode';
   static const String ONBOARDING_TABLE_NAME = 'onboarding';
   static const String LANGUAGE_CODE = 'languageCode';
+  static const String PRODUCTS = 'Products';
+  static const String ALL_PRODUCTS = 'all_products';
 
 }

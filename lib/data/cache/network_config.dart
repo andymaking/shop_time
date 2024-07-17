@@ -5,7 +5,9 @@ class NetworkConfig {
 
   static String DEVELOP_BASE_URL = baseUrl;
   static String RELEASE_BASE_URL = productionBaseUrl;
-  static String FLW_SECRET_KEY = secretKey;
-  static String FLW_PUBLIC_KEY = publicKey;
+  static String API_KEY = apiKey;
+  static String APP_ID = appID;
+  static String ORGANIZATION_ID = organizationID;
+  static String IMAGES_URL = imagesUrl;
 
 }

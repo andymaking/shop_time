@@ -9,7 +9,11 @@ import '../data/services/local/navigation.service.dart';
 import '../data/services/local/storage.service.dart';
 import '../data/services/local/theme.service.dart';
 import '../data/services/local/user.service.dart';
-import '../data/services/web/authentication.service.dart';
+import 'data/services/web/shop.service.dart';
+import 'screens/base-vm.dart';
+import 'screens/main/bottom.nav.vm.dart';
+import 'screens/main/cart/cart.vm.dart';
+import 'screens/main/home/home.vm.dart';
 
 
 GetIt locator = GetIt.I;
@@ -27,21 +31,14 @@ setUpServices(){
   locator.registerLazySingleton<UserService>(() => UserService());
   locator.registerLazySingleton<ThemeModel>(() => ThemeModel());
   locator.registerLazySingleton<LocaleService>(() => LocaleService());
-  // locator.registerLazySingleton<ExchangeService>(() => ExchangeService(locator<Dio>()));
-  // locator.registerLazySingleton<LocationViewModel>(() => LocationViewModel());
-  locator.registerLazySingleton<AuthenticationService>(() => AuthenticationService());
+  locator.registerLazySingleton<ShopService>(() => ShopService());
 }
 
 registerViewModel(){
   /* TODO Setup viewModels*/
-  // locator.registerFactory<BaseViewModel>(() => BaseViewModel());
-  // locator.registerFactory<SignUpViewModel>(() => SignUpViewModel());
-  // locator.registerFactory<HomeTabViewModel>(() => HomeTabViewModel());
+  locator.registerFactory<BaseViewModel>(() => BaseViewModel());
+  locator.registerFactory<BottomNavigationViewModel>(() => BottomNavigationViewModel());
+  locator.registerFactory<HomeViewModel>(() => HomeViewModel());
+  locator.registerFactory<CartViewModel>(() => CartViewModel());
   // locator.registerFactory<HomeViewModel>(() => HomeViewModel());
-  // locator.registerFactory<SettingsViewModel>(() => SettingsViewModel());
-  // locator.registerFactory<SendMoneyViewModel>(() => SendMoneyViewModel());
-  // locator.registerFactory<ForgotPasswordViewModel>(() => ForgotPasswordViewModel());
-  // locator.registerFactory<ProfileEditViewModel>(() => ProfileEditViewModel());
-  // locator.registerFactory<ProfileHomeViewModel>(() => ProfileHomeViewModel());
-  // locator.registerFactory<SettingsViewModel>(() => SettingsViewModel());
 }

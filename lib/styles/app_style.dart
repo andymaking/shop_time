@@ -9,10 +9,13 @@ class Styles {
   static ThemeData themeData({bool? isDark}) {
     return ThemeData(
         fontFamily: 'Satoshi',
-        primaryColor: isDark == true? primaryDarkColor: primaryColor,
+        primaryColor: primaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         unselectedWidgetColor: isDark == true? Colors.white: Colors.black,
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.blue,
+          accentColor: const Color(0xFFEDEDED)
+        ).copyWith(
           background: isDark == true? Colors.black: Colors.white,
         ),
         indicatorColor: const Color(0xffCBDCF8),
@@ -31,25 +34,23 @@ class Styles {
           bodyMedium: TextStyle(
             color: isDark == true? Colors.white : textColor,
             fontSize: 14.sp,
-            fontFamily: 'Satoshi',
+            fontWeight: FontWeight.normal,
+          ),
+          bodySmall: TextStyle(
+            color: isDark == true? Colors.white : textColor.withOpacity(0.67),
+            fontSize: 12.sp,
             fontWeight: FontWeight.normal,
           ),
           bodyLarge: TextStyle(
             color: isDark == true? Colors.white : textColor,
-            fontSize: 24.sp,
-            fontFamily: 'Satoshi',
-            fontWeight: FontWeight.w700,
+            fontSize: 19.sp,
+            fontWeight: FontWeight.w600,
           ),
           titleLarge: TextStyle(
             fontSize: 16.sp,
             fontWeight: FontWeight.w700,
             color: isDark == true? Colors.white : textColor
           ),
-          // subtitle2: TextStyle(
-          //     fontSize: 24.sp,
-          //     fontWeight: FontWeight.w700,
-          //     color: isDark == true? Colors.white : textColor
-          // ),
         ),
         cardColor: isDark == true? Colors.black: Colors.white,
         canvasColor: Colors.grey[50],
@@ -64,7 +65,6 @@ class Styles {
             fontSize: 20.sp,
             fontWeight: FontWeight.w700,
             color: isDark == true? Colors.white : textColor,
-            fontFamily: 'Satoshi',
           ),
         ),
         scaffoldBackgroundColor: isDark == true?

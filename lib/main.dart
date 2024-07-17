@@ -8,11 +8,13 @@ import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
 import 'data/cache/config.dart';
+import 'data/routes/router.dart';
 import 'data/services/local/locale.service.dart';
 import 'data/services/local/navigation.service.dart';
 import 'data/services/local/theme.service.dart';
 import 'data/services/local/user.service.dart';
 import 'locator.dart';
+import 'screens/splash-screen/splash_screen.dart';
 import 'styles/app_style.dart';
 
 
@@ -78,12 +80,10 @@ class MyApp extends StatelessWidget {
                         scaffoldMessengerKey: locator<NavigationService>().snackBarKey,
                         title: "TEMPLATE",
                         theme: Styles.themeData(isDark: themeProvider.isDark),
-                        // onGenerateRoute: Routers.generateRoute,
+                        onGenerateRoute: Routers.generateRoute,
                         supportedLocales: locator<LocaleService>().localization.supportedLocales,
                         localizationsDelegates: locator<LocaleService>().localization.localizationsDelegates,
-                        home: Scaffold(
-                          backgroundColor: Theme.of(context).primaryColor,
-                        ),
+                        home: const SplashScreen(),
                       );
                     },
                   ));
