@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:shoptime/data/cache/constants.dart';
 import 'package:shoptime/utils/snack_message.dart';
 
@@ -6,6 +7,8 @@ import '../../base-vm.dart';
 import 'check-out.dart';
 
 class CartViewModel extends BaseViewModel {
+  var discountPriceController = TextEditingController();
+
   List<Items> cartItems = [];
 
   deleteCartItem(int index) async {
@@ -45,20 +48,26 @@ class CartViewModel extends BaseViewModel {
   }
 
   navigateToCheckout(){
-    navigationService.navigateToWidget(CheckOutScreen());
+    navigationService.navigateToWidget(CheckOutScreen(
+      products: cartItems,
+      totalPrice: allPrice,
+      discountedPrice: payPrice,
+      deliveryFee: deliveryFee,
+    ));
   }
 
   num totalPrice = 0;
+  num allPrice = 0;
   num discountedPrice = 0;
   num deliveryFee  = 1500;
   num payPrice = 0;
 
   getPrice() {
     totalPrice = cartItems.fold(0, (sum, item) => sum + ((item.quantity ?? 0)*(item.currentPrice?[0].value??0)));
-    discountedPrice = totalPrice * (5/100);
+    allPrice = cartItems.fold(0, (sum, item) => sum + ((item.quantity ?? 0)*(item.currentPrice?[0].value??0)));
+    discountedPrice = discountPriceController.text.trim().isEmpty? 0: (totalPrice * (5/100));
     payPrice = (totalPrice + deliveryFee) - discountedPrice;
 
-    print(payPrice);
     notifyListeners();
   }
 }

@@ -191,15 +191,16 @@ class CartHomeScreen extends StatelessWidget {
                         child: AppTextField(
                           isDark: false,
                           keyboardType: TextInputType.text,
+                          controller: model.discountPriceController,
                         ),
                       ),
                       16.sp.sbW,
                       AppButton(
-                          isLoading: false,
+                        isLoading: false,
                         isExpanded: true,
                         text: "Apply",
                         padding: 20.sp.padH,
-                        onTap: (){},
+                        onTap: model.getPrice,
                       )
                     ],
                   ),

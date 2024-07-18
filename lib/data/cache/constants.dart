@@ -1,4 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:shoptime/data/repository/repository.service.dart';
+import 'package:shoptime/data/repository/repository.service.dart';
 
 import '../../locator.dart';
 import '../services/local/navigation.service.dart';
@@ -7,6 +9,7 @@ import '../services/local/user.service.dart';
 
 
 UserService userService = locator<UserService>();
+Repository repository = locator<Repository>();
 StorageService storageService = locator<StorageService>();
 NavigationService navigationService = locator<NavigationService>();
 

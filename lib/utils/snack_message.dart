@@ -25,7 +25,7 @@ Widget toast(String message, {bool? success, String? title}) {
               padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 14.sp),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: !success! ? Theme.of(context).primaryColor : Colors.black,
+                color: success == true? Colors.black : Colors.red,
                 borderRadius: BorderRadius.circular(12.sp)
               ),
               child: Row(
@@ -43,7 +43,7 @@ Widget toast(String message, {bool? success, String? title}) {
                         title != null? AppText(
                           title??"",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: success == true ? Colors.white: Colors.white,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w700
                           ),
@@ -52,7 +52,7 @@ Widget toast(String message, {bool? success, String? title}) {
                         AppText(
                           message,
                           style: TextStyle(
-                            color: Colors.white,
+                            color: success == true ? Colors.white: Colors.white,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w400
                           ),

@@ -55,6 +55,9 @@ List<Items> getGetItemsDataListFromJson(String str) =>
 String getItemsDataListToJson(List<Items> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
+List<Map<String, dynamic>> getItemsListToJson(List<Items> data) =>
+    List<Map<String, dynamic>>.from(data.map((x) => x.toJson()));
+
 class Items {
   String? name;
   String? description;

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shoptime/data/cache/app-images.dart';
@@ -123,7 +124,8 @@ class HomeView extends StatelessWidget {
                               return ProductCard(
                                 pageItems: pageItems,
                                 i: i,
-                                onTap: ()=> model.addToCart(pageItems[i])
+                                onTap: ()=> model.addToCart(pageItems[i]),
+                                goToDetails: ()=> model.goToDetails(pageItems[i]),
                               );
                             }
                         );
@@ -164,9 +166,10 @@ class HomeView extends StatelessWidget {
                             ),
                             itemBuilder: (_,i){
                               return ProductCard(
-                                  pageItems: pageItems,
-                                  i: i,
-                                  onTap: ()=> model.addToCart(pageItems[i])
+                                pageItems: pageItems,
+                                i: i,
+                                onTap: ()=> model.addToCart(pageItems[i]),
+                                goToDetails: ()=> model.goToDetails(pageItems[i]),
                               );
                             }
                         );
@@ -207,9 +210,10 @@ class HomeView extends StatelessWidget {
                             ),
                             itemBuilder: (_,i){
                               return ProductCard(
-                                  pageItems: pageItems,
-                                  i: i,
-                                  onTap: ()=> model.addToCart(pageItems[i])
+                                pageItems: pageItems,
+                                i: i,
+                                onTap: ()=> model.addToCart(pageItems[i]),
+                                goToDetails: ()=> model.goToDetails(pageItems[i]),
                               );
                             }
                         );
@@ -236,16 +240,18 @@ class HomeView extends StatelessWidget {
 class ProductCard extends StatelessWidget {
   const ProductCard({
     super.key,
-    required this.pageItems, required this.i, required this.onTap,
+    required this.pageItems, required this.i, required this.onTap, required this.goToDetails,
   });
 
   final List<Items> pageItems;
   final int i;
   final VoidCallback onTap;
+  final VoidCallback goToDetails;
 
   @override
   Widget build(BuildContext context) {
     return AppCard(
+      onTap: goToDetails,
       radius: 5.sp,
       padding: 0.0.padA,
       margin: (i % 2) == 1
@@ -257,32 +263,41 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            alignment: Alignment.center,
-            padding: 30.sp.padA,
-            height: 184.sp,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.sp),
-                color: Theme.of(context).colorScheme.secondary
-            ),
-            child: CachedNetworkImage(
-              imageUrl: NetworkConfig.IMAGES_URL+(pageItems[i].photos?.first.url??""),
+          Hero(
+            tag: pageItems[i].photos?.first.url??"",
+            child: Container(
+              alignment: Alignment.center,
+              padding: 30.sp.padA,
+              height: 184.sp,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.sp),
+                  color: Theme.of(context).colorScheme.secondary
+              ),
+              child: CachedNetworkImage(
+                imageUrl: NetworkConfig.IMAGES_URL+(pageItems[i].photos?.first.url??""),
+              ),
             ),
           ),
           10.sp.sbH,
-          AppText(
-            pageItems[i].name??"",
-            size: 12.sp,
-            weight: FontWeight.w600,
-            maxLine: 1,
-            overflow: TextOverflow.ellipsis,
+          Hero(
+            tag: "title/${pageItems[i].name??""}",
+            child: AppText(
+              pageItems[i].name??"",
+              size: 12.sp,
+              weight: FontWeight.w600,
+              maxLine: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
           10.sp.sbH,
-          AppText(
-            pageItems[i].description??"",
-            size: 12.sp,
-            maxLine: 1,
-            overflow: TextOverflow.ellipsis,
+          Hero(
+            tag: "title/${pageItems[i].description??""}",
+            child: AppText(
+              pageItems[i].description??"",
+              size: 12.sp,
+              maxLine: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
           10.sp.sbH,
           RatingBar.builder(

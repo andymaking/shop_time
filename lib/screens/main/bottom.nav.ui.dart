@@ -71,7 +71,7 @@ class _BottomNavigationBar extends StatelessWidget {
                 onTap: onItemSelected,
               ),
               _NavigationBarItem(
-                icon: AppImages.cart,
+                icon: AppImages.profile,
                 isSelected: (selectedIndex == 1),
                 index: 1,
                 onTap: onItemSelected,

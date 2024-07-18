@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:shoptime/data/cache/app-images.dart';
+import 'package:shoptime/data/cache/constants.dart';
 import 'package:shoptime/utils/dartz.x.dart';
 
 import '../../../data/model/get-product-response.dart';
 import '../../base-vm.dart';
+import 'product-details/product-detail.dart';
 
 class HomeViewModel extends BaseViewModel {
 
@@ -12,7 +14,9 @@ class HomeViewModel extends BaseViewModel {
   List<Items> menProducts = [];
   List<Items> womenProducts = [];
 
-
+  goToDetails(Items product){
+    navigationService.navigateToWidget(ProductDetailPage(product: product,));
+  }
 
   init()async{
     getLocalProducts();

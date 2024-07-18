@@ -8,18 +8,27 @@ import 'package:shoptime/data/cache/database-keys.dart';
 import 'package:shoptime/data/cache/palette.dart';
 import 'package:shoptime/data/repository/repository.service.dart';
 import 'package:shoptime/locator.dart';
+import 'package:shoptime/utils/snack_message.dart';
 import 'package:shoptime/utils/widget_extensions.dart';
 import 'package:shoptime/widget/apptexts.dart';
 import 'package:shoptime/widget/image_builder.dart';
 import 'package:shoptime/widget/success-screen.dart';
 import 'package:shoptime/widget/text_field.dart';
 
+import '../../../data/model/get-product-response.dart';
 import '../../../widget/app-bar-widget.dart';
 import '../../../widget/app-button.dart';
 import '../bottom.nav.ui.dart';
 
 class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({super.key});
+  final List<Items> products;
+  final num totalPrice;
+  final num discountedPrice;
+  final num deliveryFee;
+  final String email;
+  final String phoneNumber;
+  final String address;
+  const PaymentScreen({super.key, required this.products, required this.totalPrice, required this.discountedPrice, required this.deliveryFee, required this.email, required this.phoneNumber, required this.address});
 
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
@@ -35,6 +44,55 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   onChange(String? val)async{
     setState(() {});
+  }
+
+  bool isLoading = false;
+
+  startLoading()async{
+    isLoading = true;
+    setState(() {});
+  }
+
+  stopLoading()async{
+    isLoading = false;
+    setState(() {});
+  }
+
+  pay() async {
+    FocusManager.instance.primaryFocus?.unfocus();
+    startLoading();
+    try{
+      var res = await repository.createSale(
+        products: widget.products,
+        email: widget.email,
+        phoneNumber: widget.phoneNumber,
+        address: widget.address,
+        totalPrice: widget.totalPrice,
+        discountedPrice: widget.discountedPrice,
+        deliveryFee: widget.deliveryFee
+      );
+      if(res){
+        stopLoading();
+        navigationService.navigateToAndRemoveUntilWidget(
+            SuccessScreen(
+                title: "Payment Successful",
+                body: "Thanks for your purchase",
+                onTap: () async{
+                  await storageService.deleteItem(key: StorageKey.PRODUCTS);
+                  navigationService.navigateToAndRemoveUntilWidget(const BottomNavigationScreen(initialIndex: 2,));
+                }
+            )
+        );
+      }else{
+        stopLoading();
+        showCustomToast("Error making order");
+      }
+      stopLoading();
+    }catch(err){
+      print(err);
+      showCustomToast("Error making order");
+      stopLoading();
+    }
   }
 
   @override
@@ -138,19 +196,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               child: AppButton(
                 isLoading: false,
                 text: "Make Payment",
-                onTap: formKey.currentState?.validate() == true? (){
-                  FocusManager.instance.primaryFocus?.unfocus();
-                  navigationService.navigateToAndRemoveUntilWidget(
-                    SuccessScreen(
-                      title: "Payment Successful",
-                      body: "Thanks for your purchase",
-                      onTap: () async{
-                        await storageService.deleteItem(key: StorageKey.PRODUCTS);
-                        navigationService.navigateToAndRemoveUntilWidget(const BottomNavigationScreen(initialIndex: 2,));
-                      }
-                    )
-                  );
-                }: null,
+                onTap: formKey.currentState?.validate() == true? pay: null,
               ),
             ),
             60.sp.sbH,
