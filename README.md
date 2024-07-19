@@ -25,7 +25,7 @@
 
 ## TO PREVIEW THE APP ON YOUR BROWSER
 Just click on the link below
-[APPETIZE](https://appetize.io/app/b_4dgs34s6gviyuyesb5k6xtwaqm)
+[APPETIZE](https://appetize.io/app/b_77ymhuh6snuqeqou5y5zqjn364)
 
 ## TO VIEW REPOSITORY
 [GITHUB](https://github.com/andymaking/shop_time)
@@ -43,6 +43,7 @@ Just click on the link below
 ![CHECKOUT SCREEN AFTER SELECTING ADDRESS](https://github.com/andymaking/shop_time/blob/main/assets/images/10.jpeg)
 ![PAYMENT SCREEN - EMPTY](https://github.com/andymaking/shop_time/blob/main/assets/images/11.jpeg)
 ![PAYMENT SCREEN - VALIDATING](https://github.com/andymaking/shop_time/blob/main/assets/images/12.jpeg)
+
 ## DOWNLOAD THE APK
 Just click on the link below to download the App
-[SHOPTIME APK (GOOGLE DRIVE)](https://drive.google.com/file/d/1D3W9g53btKt2PrBDH6H7rNgkxyBMI2lq/view?usp=sharing)
+[SHOPTIME APK (GOOGLE DRIVE)](https://drive.google.com/file/d/1Fb0CmkYf0_-2JQKm8GrE0avJFVdoAXcG/view?usp=sharing)
