@@ -14,6 +14,8 @@ import 'screens/base-vm.dart';
 import 'screens/main/bottom.nav.vm.dart';
 import 'screens/main/cart/cart.vm.dart';
 import 'screens/main/home/home.vm.dart';
+import 'screens/main/home/product-details/product-detail.vm.dart';
+import 'screens/main/profile/profile-home.vm.dart';
 
 
 GetIt locator = GetIt.I;
@@ -40,5 +42,6 @@ registerViewModel(){
   locator.registerFactory<BottomNavigationViewModel>(() => BottomNavigationViewModel());
   locator.registerFactory<HomeViewModel>(() => HomeViewModel());
   locator.registerFactory<CartViewModel>(() => CartViewModel());
-  // locator.registerFactory<HomeViewModel>(() => HomeViewModel());
+  locator.registerFactory<ProductDetailVoewModel>(() => ProductDetailVoewModel());
+  locator.registerFactory<ProfileHomeViewModel>(() => ProfileHomeViewModel());
 }

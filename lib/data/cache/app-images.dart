@@ -19,6 +19,7 @@ class AppImages {
   static const cart = 'assets/svg/cart.svg';
   static const successIcon = 'assets/svg/success_icon.svg';
   static const errorIcon = 'assets/svg/error_icon.svg';
+  static const profile = 'assets/svg/profile.svg';
   static const delete = 'assets/svg/delete.svg';
   static const plus = 'assets/svg/plus.svg';
   static const minus = 'assets/svg/minus.svg';

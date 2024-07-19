@@ -304,17 +304,17 @@ class CustomPhoneNumberInput extends StatelessWidget {
                 filled: true,
                 fillColor:enabled? Colors.transparent: Colors.grey.withOpacity(0.3),
                 focusedBorder: OutlineInputBorder(borderSide:
-                BorderSide(color:primaryColor, width: 3),
+                BorderSide(color:successColor, width: 1.sp),
                     borderRadius: BorderRadius.circular(8)),
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 0.8, color: Theme.of(context).cardColor == Colors.black? Colors.white.withOpacity(0.9) : const Color(0xFF2A2A2A).withOpacity(0.6)),
+                    borderSide: BorderSide(width: 0.8.sp, color: Theme.of(context).cardColor == Colors.black? Colors.white.withOpacity(0.9) : const Color(0xFF2A2A2A).withOpacity(0.6)),
                     borderRadius: BorderRadius.circular(8)),
                 errorBorder:OutlineInputBorder(
-                    borderSide: BorderSide(width: 2, color: Theme.of(context).colorScheme.error),
+                    borderSide: BorderSide(width: 1.sp, color: Theme.of(context).colorScheme.error),
                     borderRadius: BorderRadius.circular(8)),
                 errorStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
                 focusedErrorBorder:OutlineInputBorder(
-                    borderSide: BorderSide(width: 2, color :primaryColor,),
+                    borderSide: BorderSide(width: 1.sp, color :primaryColor,),
                     borderRadius: BorderRadius.circular(8)),
                 disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(width: 0.8, color: const Color(0xFF2A2A2A).withOpacity(0.3)),

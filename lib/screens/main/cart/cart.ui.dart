@@ -191,15 +191,16 @@ class CartHomeScreen extends StatelessWidget {
                         child: AppTextField(
                           isDark: false,
                           keyboardType: TextInputType.text,
+                          controller: model.discountPriceController,
                         ),
                       ),
                       16.sp.sbW,
                       AppButton(
-                          isLoading: false,
+                        isLoading: false,
                         isExpanded: true,
                         text: "Apply",
                         padding: 20.sp.padH,
-                        onTap: (){},
+                        onTap: model.getPrice,
                       )
                     ],
                   ),
@@ -264,6 +265,36 @@ class PriceOption extends StatelessWidget {
           ),
           PriceWidget(
             value: value,
+            weight: FontWeight.w600,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class PriceOthersOption extends StatelessWidget {
+  final String title;
+  final String value;
+  const PriceOthersOption({
+    super.key, required this.title, required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: 16.sp.padB,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          AppText(
+            title,
+            color: textColor.withOpacity(0.8),
+            size: 12.sp,
+            weight: FontWeight.w500,
+          ),
+          AppText(
+            value,
             weight: FontWeight.w600,
           )
         ],

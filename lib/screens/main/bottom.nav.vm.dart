@@ -6,6 +6,7 @@ import '../../widget/app-bar-widget.dart';
 import '../base-vm.dart';
 import 'cart/cart.ui.dart';
 import 'home/home.ui.dart';
+import 'profile/profile-home.ui.dart';
 
 class BottomNavigationViewModel extends BaseViewModel {
 
@@ -26,9 +27,7 @@ class BottomNavigationViewModel extends BaseViewModel {
 
   List<Widget> screens = [
     const HomeView(),
-    Scaffold(
-      backgroundColor: Colors.orange,
-    ),
+    ProfileHomeScreen(),
     CartHomeScreen(),
 
   ];
