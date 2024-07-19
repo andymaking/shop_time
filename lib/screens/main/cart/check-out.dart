@@ -18,7 +18,8 @@ class CheckOutScreen extends StatefulWidget {
   final num totalPrice;
   final num discountedPrice;
   final num deliveryFee;
-  const CheckOutScreen({super.key, required this.products, required this.totalPrice, required this.discountedPrice, required this.deliveryFee});
+  final num pay;
+  const CheckOutScreen({super.key, required this.products, required this.totalPrice, required this.discountedPrice, required this.deliveryFee, required this.pay});
 
   @override
   State<CheckOutScreen> createState() => _CheckOutScreenState();
@@ -67,6 +68,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
       totalPrice: widget.totalPrice,
       discountedPrice: widget.discountedPrice,
       deliveryFee: widget.deliveryFee,
+      pay: widget.pay,
       email: emailController.text.trim(),
       address: selectedAddress??"",
       phoneNumber: finalPhoneNumber,

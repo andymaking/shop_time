@@ -1,4 +1,7 @@
 
+import 'package:shoptime/screens/main/home/product-details/product-detail.dart';
+
+import '../../../../data/cache/constants.dart';
 import '../../../../data/model/get-product-response.dart';
 import '../../../base-vm.dart';
 
@@ -11,6 +14,10 @@ class ProductDetailVoewModel extends BaseViewModel{
     await getBookMarks();
     repository.addRecentlyViewed(products);
     notifyListeners();
+  }
+
+  goToDetails(Items productz){
+    navigationService.navigateToReplaceWidget(ProductDetailPage(product: productz,));
   }
 
   getBookMarks()async{

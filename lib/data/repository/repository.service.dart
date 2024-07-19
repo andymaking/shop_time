@@ -43,6 +43,7 @@ class Repository {
     required String address,
     required num totalPrice,
     required num discountedPrice,
+    required num pay,
     required num deliveryFee,
   }) async {
     List<Map<String, dynamic>> list = await getLocalOrders();
@@ -58,6 +59,7 @@ class Repository {
         "total_price": totalPrice,
         "date": DateTime.now().toString(),
         "discounted_price": discountedPrice,
+        "pay_price": pay,
         "delivery_fee": deliveryFee,
         "products_sold" : getItemsListToJson(products),
       };
@@ -122,7 +124,7 @@ class Repository {
           item.updateQuantity(1);
           items.add(item);
           await storageService.storeItem(key: StorageKey.PRODUCTS, value: getItemsDataListToJson(items));
-          showCustomToast("${item.name} added to cart successfully");
+          showCustomToast("${item.name} added to cart successfully", success: true);
           return true;
         }
       } else {

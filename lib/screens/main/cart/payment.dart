@@ -25,10 +25,11 @@ class PaymentScreen extends StatefulWidget {
   final num totalPrice;
   final num discountedPrice;
   final num deliveryFee;
+  final num pay;
   final String email;
   final String phoneNumber;
   final String address;
-  const PaymentScreen({super.key, required this.products, required this.totalPrice, required this.discountedPrice, required this.deliveryFee, required this.email, required this.phoneNumber, required this.address});
+  const PaymentScreen({super.key, required this.products, required this.totalPrice, required this.discountedPrice, required this.deliveryFee, required this.email, required this.phoneNumber, required this.address, required this.pay});
 
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
@@ -69,7 +70,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
         address: widget.address,
         totalPrice: widget.totalPrice,
         discountedPrice: widget.discountedPrice,
-        deliveryFee: widget.deliveryFee
+        deliveryFee: widget.deliveryFee,
+        pay: widget.pay
       );
       if(res){
         stopLoading();

@@ -273,6 +273,36 @@ class PriceOption extends StatelessWidget {
   }
 }
 
+class PriceOthersOption extends StatelessWidget {
+  final String title;
+  final String value;
+  const PriceOthersOption({
+    super.key, required this.title, required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: 16.sp.padB,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          AppText(
+            title,
+            color: textColor.withOpacity(0.8),
+            size: 12.sp,
+            weight: FontWeight.w500,
+          ),
+          AppText(
+            value,
+            weight: FontWeight.w600,
+          )
+        ],
+      ),
+    );
+  }
+}
+
 class NewIconButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String icon;

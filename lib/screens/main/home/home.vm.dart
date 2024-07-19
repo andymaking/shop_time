@@ -5,6 +5,7 @@ import 'package:shoptime/utils/dartz.x.dart';
 
 import '../../../data/model/get-product-response.dart';
 import '../../base-vm.dart';
+import '../profile/order_screen.dart';
 import 'product-details/product-detail.dart';
 
 class HomeViewModel extends BaseViewModel {
@@ -14,8 +15,12 @@ class HomeViewModel extends BaseViewModel {
   List<Items> menProducts = [];
   List<Items> womenProducts = [];
 
-  goToDetails(Items product){
-    navigationService.navigateToWidget(ProductDetailPage(product: product,));
+  goToOrders(){
+    navigationService.navigateToWidget(const OrderScreen());
+  }
+
+  goToDetails(Items product, String caterories,List<Items> categoryProducts){
+    navigationService.navigateToWidget(ProductDetailPage(product: product, items: categoryProducts, category: caterories,));
   }
 
   init()async{

@@ -2,12 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shoptime/data/cache/app-images.dart';
 import 'package:shoptime/data/cache/constants.dart';
 import 'package:shoptime/data/cache/network_config.dart';
 import 'package:shoptime/data/model/get-product-response.dart';
+import 'package:shoptime/utils/string-extensions.dart';
 import 'package:shoptime/utils/widget_extensions.dart';
 import 'package:shoptime/widget/inidicator.dart';
 
@@ -15,13 +17,16 @@ import '../../../../widget/app-bar-widget.dart';
 import '../../../../widget/app-button.dart';
 import '../../../../widget/app-card.dart';
 import '../../../../widget/apptexts.dart';
+import '../../../../widget/price-widget.dart';
 import '../../../base-ui.dart';
 import '../../cart/cart.ui.dart';
 import 'product-detail.vm.dart';
 
 class ProductDetailPage extends StatelessWidget {
+  final List<Items>? items;
+  final String? category;
   final Items product;
-  const ProductDetailPage({super.key, required this.product});
+  const ProductDetailPage({super.key, required this.product, this.items, this.category});
 
   @override
   Widget build(BuildContext context) {
@@ -147,7 +152,104 @@ class ProductDetailPage extends StatelessWidget {
                               onTap:()=> model.addToCart(product),
                             ),
                           ],
-                        )
+                        ),
+                        16.sp.sbH,
+                        category!=null? Container(
+                          height: 40.sp,
+                          width: width(context),
+                          color: Colors.black87,
+                          padding: 16.sp.padL,
+                          alignment: Alignment.centerLeft,
+                          child: AppText(
+                            (product.categories?[0].name??'').toTitleCase(),
+                            color: Colors.white,
+                            weight: FontWeight.w700,
+                          ),
+                        ): 0.0.sbH,
+                        category!=null? 16.sp.sbH: 0.sp.sbH,
+                        items!=null? SizedBox(
+                          height: 290.sp,
+                          width: width(context),
+                          child: ListView.builder(
+                            itemCount: items?.length??0,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (_,i){
+                              return AppCard(
+                                widths: (width(context)/2),
+                                onTap: ()=> model.goToDetails(items![i]),
+                                radius: 5.sp,
+                                padding: 0.0.padA,
+                                margin: 10.sp.padR,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Hero(
+                                      tag: items?[i].photos?.first.url??"",
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        padding: 30.sp.padA,
+                                        height: 184.sp,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(5.sp),
+                                            color: Theme.of(context).colorScheme.secondary
+                                        ),
+                                        child: CachedNetworkImage(
+                                          imageUrl: NetworkConfig.IMAGES_URL+(items?[i].photos?.first.url??""),
+                                        ),
+                                      ),
+                                    ),
+                                    10.sp.sbH,
+                                    Hero(
+                                      tag: "title/${items?[i].name??""}",
+                                      child: AppText(
+                                        items?[i].name??"",
+                                        size: 12.sp,
+                                        weight: FontWeight.w600,
+                                        maxLine: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                    10.sp.sbH,
+                                    Hero(
+                                      tag: "title/${items?[i].description??""}",
+                                      child: AppText(
+                                        items?[i].description??"",
+                                        size: 12.sp,
+                                        maxLine: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                    10.sp.sbH,
+                                    RatingBar.builder(
+                                      initialRating: 4.5,
+                                      minRating: 0,
+                                      direction: Axis.horizontal,
+                                      allowHalfRating: true,
+                                      ignoreGestures: true,
+                                      itemSize: 15.sp,
+                                      itemCount: 5,
+                                      itemPadding: const EdgeInsets.symmetric(horizontal: 0.0),
+                                      itemBuilder: (context, _) => Icon(
+                                        CupertinoIcons.star_fill,
+                                        color: const Color(0xFFFFA000),
+                                        size: 15.sp,
+                                      ),
+                                      onRatingUpdate: (rating) {
+                                      },
+                                    ),
+                                    Spacer(),
+                                    PriceWidget(
+                                      value: items?[i].currentPrice?[0].value,
+                                      color: Theme.of(context).primaryColor,
+                                      isDollar: false,
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+                          ),
+                        ):0.0.sbH,
+                        50.sp.sbH
                       ],
                     )
                 )

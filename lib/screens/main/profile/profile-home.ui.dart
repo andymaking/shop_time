@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shoptime/data/cache/palette.dart';
 import 'package:shoptime/utils/widget_extensions.dart';
@@ -18,47 +19,69 @@ class ProfileHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseView<ProfileHomeViewModel>(
       builder: (_, model, theme, child)=> Scaffold(
-        appBar: AppBars(
-          text: "Account",
-          leading: Image.asset(
-            AppImages.appSplashLogo,
-            width: 99.sp,
-            height: 31.sp,
-          ),
-        ),
-        body: Padding(
-          padding: 16.sp.padH,
-          child: ListView(
+        body: SafeArea(
+          child: Column(
             children: [
-              16.sp.sbH,
-              AppCard(
-                bordered: true,
-                radius: 10.sp,
-                child: ListView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
+              10.sp.sbH,
+              Padding(
+                padding: 16.sp.padH,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ProfileOption(
-                      onTap: model.goToOrders,
-                      icon: CupertinoIcons.cart,
-                      text: "Order History",
+                    Image.asset(
+                      AppImages.appSplashLogo,
+                      width: 99.sp,
+                      height: 31.sp,
                     ),
-                    Divider(),
-                    ProfileOption(
-                      onTap: model.goToBookmarks,
-                      icon: CupertinoIcons.heart_circle,
-                      text: "Saved Items",
-                    ),
-                    Divider(),
-                    ProfileOption(
-                      onTap: model.goToRecentlyViewed,
-                      icon: CupertinoIcons.eye,
-                      text: "Recently viewed",
+                    AppText("Account", size: 20.sp, weight: FontWeight.w600,),
+                    Image.asset(
+                      AppImages.appSplashLogo,
+                      width: 99.sp,
+                      height: 31.sp,
+                      color: Colors.transparent,
                     ),
 
                   ],
                 ),
-              )
+              ),
+              Expanded(
+                child: Padding(
+                  padding: 16.sp.padH,
+                  child: ListView(
+                    children: [
+                      16.sp.sbH,
+                      AppCard(
+                        bordered: true,
+                        radius: 10.sp,
+                        child: ListView(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          children: [
+                            ProfileOption(
+                              onTap: model.goToOrders,
+                              icon: CupertinoIcons.cart,
+                              text: "Order History",
+                            ),
+                            Divider(),
+                            ProfileOption(
+                              onTap: model.goToBookmarks,
+                              icon: CupertinoIcons.heart_circle,
+                              text: "Saved Items",
+                            ),
+                            Divider(),
+                            ProfileOption(
+                              onTap: model.goToRecentlyViewed,
+                              icon: CupertinoIcons.eye,
+                              text: "Recently viewed",
+                            ),
+          
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

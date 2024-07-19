@@ -51,8 +51,9 @@ class CartViewModel extends BaseViewModel {
     navigationService.navigateToWidget(CheckOutScreen(
       products: cartItems,
       totalPrice: allPrice,
-      discountedPrice: payPrice,
+      discountedPrice: allPrice - discountedPrice,
       deliveryFee: deliveryFee,
+      pay: payPrice,
     ));
   }
 
@@ -67,7 +68,6 @@ class CartViewModel extends BaseViewModel {
     allPrice = cartItems.fold(0, (sum, item) => sum + ((item.quantity ?? 0)*(item.currentPrice?[0].value??0)));
     discountedPrice = discountPriceController.text.trim().isEmpty? 0: (totalPrice * (5/100));
     payPrice = (totalPrice + deliveryFee) - discountedPrice;
-
     notifyListeners();
   }
 }
