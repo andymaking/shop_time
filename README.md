@@ -25,7 +25,7 @@
 
 ## TO PREVIEW THE APP ON YOUR BROWSER
 Just click on the link below
-[APPETIZE](https://appetize.io/app/b_77ymhuh6snuqeqou5y5zqjn364)
+[APPETIZE](https://appetize.io/app/b_hphabh4gtxuwcuvuucbkz7r65q)
 
 ## TO VIEW REPOSITORY
 [GITHUB](https://github.com/andymaking/shop_time)
