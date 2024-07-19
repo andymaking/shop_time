@@ -1,4 +1,4 @@
-# ANDIMATIMBUSHOP
+# SHOPTIME
 
 ## HOW TO RUN THE APP
 
@@ -33,4 +33,4 @@ Just click on the link below
 ![PAYMENT SCREEN - VALIDATING](https://github.com/andymaking/shop_time/blob/main/assets/images/12.jpeg)
 ## DOWNLOAD THE APK
 Just click on the link below to download the App
-[SHOPPER APK (GOOGLE DRIVE)](https://drive.google.com/file/d/1D3W9g53btKt2PrBDH6H7rNgkxyBMI2lq/view?usp=sharing)
+[SHOPTIME APK (GOOGLE DRIVE)](https://drive.google.com/file/d/1D3W9g53btKt2PrBDH6H7rNgkxyBMI2lq/view?usp=sharing)
