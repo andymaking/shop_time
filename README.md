@@ -20,17 +20,17 @@ Just click on the link below
 
 ## GALLERY
 
-![SPLASH SCREEN](https://github.com/andymaking/shop_time/blob/main/assets/images/1.png)
-![PRODUCT PAGE - (LOADING)](https://github.com/andymaking/shop_time/blob/main/assets/images/2.png)
-![PRODUCT PAGE - WITH PRODUCT](https://github.com/andymaking/shop_time/blob/main/assets/images/3.png)
-![PRODUCT PAGE - WITH PRODUCT - SCROLL](https://github.com/andymaking/shop_time/blob/main/assets/images/4.png)
-![PRODUCT PAGE - WITH PRODUCT - NOTIFICATION ITEM ADDED TO CART](https://github.com/andymaking/shop_time/blob/main/assets/images/5.png)
-![CART WITH ONE PRODUCT](https://github.com/andymaking/shop_time/blob/main/assets/images/6.png)
-![CART WITH TWO PRODUCTS](https://github.com/andymaking/shop_time/blob/main/assets/images/8.png)
-![CHECKOUT SCREEN BEFORE SELECTING ADDRESS](https://github.com/andymaking/shop_time/blob/main/assets/images/9.png)
-![CHECKOUT SCREEN AFTER SELECTING ADDRESS](https://github.com/andymaking/shop_time/blob/main/assets/images/10.png)
-![PAYMENT SCREEN - EMPTY](https://github.com/andymaking/shop_time/blob/main/assets/images/11.png)
-![PAYMENT SCREEN - VALIDATING](https://github.com/andymaking/shop_time/blob/main/assets/images/12.png)
+![SPLASH SCREEN](https://github.com/andymaking/shop_time/blob/main/assets/images/1.jpeg)
+![PRODUCT PAGE - (LOADING)](https://github.com/andymaking/shop_time/blob/main/assets/images/2.jpeg)
+![PRODUCT PAGE - WITH PRODUCT](https://github.com/andymaking/shop_time/blob/main/assets/images/3.jpeg)
+![PRODUCT PAGE - WITH PRODUCT - SCROLL](https://github.com/andymaking/shop_time/blob/main/assets/images/4.jpeg)
+![PRODUCT PAGE - WITH PRODUCT - NOTIFICATION ITEM ADDED TO CART](https://github.com/andymaking/shop_time/blob/main/assets/images/5.jpeg)
+![CART WITH ONE PRODUCT](https://github.com/andymaking/shop_time/blob/main/assets/images/6.jpeg)
+![CART WITH TWO PRODUCTS](https://github.com/andymaking/shop_time/blob/main/assets/images/8.jpeg)
+![CHECKOUT SCREEN BEFORE SELECTING ADDRESS](https://github.com/andymaking/shop_time/blob/main/assets/images/9.jpeg)
+![CHECKOUT SCREEN AFTER SELECTING ADDRESS](https://github.com/andymaking/shop_time/blob/main/assets/images/10.jpeg)
+![PAYMENT SCREEN - EMPTY](https://github.com/andymaking/shop_time/blob/main/assets/images/11.jpeg)
+![PAYMENT SCREEN - VALIDATING](https://github.com/andymaking/shop_time/blob/main/assets/images/12.jpeg)
 ## DOWNLOAD THE APK
 Just click on the link below to download the App
 [SHOPPER APK (GOOGLE DRIVE)](https://drive.google.com/file/d/1D3W9g53btKt2PrBDH6H7rNgkxyBMI2lq/view?usp=sharing)
