@@ -20,7 +20,7 @@ Just click on the link below
 
 ## GALLERY
 
-![SPLASH SCREEN](https://github.com/andymaking/shop_time/blob/main/assets/images/1.png)
+![SPLASH SCREEN](https://github.com/andymaking/shop_time/blob/main/assets/images/1.jpeg)
 ![PRODUCT PAGE - (LOADING)](https://github.com/andymaking/shop_time/blob/main/assets/images/2.png)
 ![PRODUCT PAGE - WITH PRODUCT](https://github.com/andymaking/shop_time/blob/main/assets/images/3.png)
 ![PRODUCT PAGE - WITH PRODUCT - SCROLL](https://github.com/andymaking/shop_time/blob/main/assets/images/4.png)

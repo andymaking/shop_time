@@ -246,14 +246,15 @@ class CartHomeScreen extends StatelessWidget {
 class PriceOption extends StatelessWidget {
   final String title;
   final num value;
+  final double? paddingBottom;
   const PriceOption({
-    super.key, required this.title, required this.value,
+    super.key, required this.title, required this.value, this.paddingBottom,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: 16.sp.padB,
+      padding: (paddingBottom??16).sp.padB,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -263,6 +264,7 @@ class PriceOption extends StatelessWidget {
             size: 12.sp,
             weight: FontWeight.w500,
           ),
+          Spacer(),
           PriceWidget(
             value: value,
             weight: FontWeight.w600,
@@ -276,16 +278,18 @@ class PriceOption extends StatelessWidget {
 class PriceOthersOption extends StatelessWidget {
   final String title;
   final String value;
+  final double? paddingBottom;
   const PriceOthersOption({
-    super.key, required this.title, required this.value,
+    super.key, required this.title, required this.value, this.paddingBottom,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: 16.sp.padB,
+      padding: (paddingBottom??16).sp.padB,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppText(
             title,
@@ -293,9 +297,13 @@ class PriceOthersOption extends StatelessWidget {
             size: 12.sp,
             weight: FontWeight.w500,
           ),
-          AppText(
-            value,
-            weight: FontWeight.w600,
+          16.sp.sbW,
+          Expanded(
+            child: AppText(
+              value,
+              weight: FontWeight.w600,
+              align: TextAlign.end,
+            ),
           )
         ],
       ),
